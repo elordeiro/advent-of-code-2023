@@ -5,7 +5,7 @@
             "type": "go",
             "request": "launch",
             "mode": "auto",
-            "program": "${fileDirname}"
+            "program": "${fileDirname}/../main.go",
         },
         {
             "name": "Python Debugger: Python File",
