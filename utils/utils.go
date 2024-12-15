@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"os"
 	"strconv"
+	"strings"
 )
 
 func ReadMatrix(fileName string) [][]byte {
@@ -14,6 +15,23 @@ func ReadMatrix(fileName string) [][]byte {
 	for scanner.Scan() {
 		text := scanner.Bytes()
 		mat = append(mat, append([]byte{}, text...))
+	}
+	return mat
+}
+
+func ReadIntMatrix(fileName string) [][]int {
+	scanner, fp := FileScanner(fileName)
+	defer fp.Close()
+
+	var mat [][]int
+	for scanner.Scan() {
+		text := scanner.Text()
+		parts := strings.Split(text, " ")
+		var row []int
+		for _, p := range parts {
+			row = append(row, Atoi(p))
+		}
+		mat = append(mat, row)
 	}
 	return mat
 }
